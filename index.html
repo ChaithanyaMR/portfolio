@@ -41,7 +41,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .nav-badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;background:#e8f5e4;color:#2d6a1f;border:1px solid #b8dba8}
 
 /* ── HERO ── */
-.hero{max-width:1100px;margin:0 auto;padding:96px 48px 80px}
+.hero{max-width:1100px;margin:0 auto;padding:56px 48px 48px}
 .hero-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;color:var(--ink-3);text-transform:uppercase;margin-bottom:24px}
 .hero-headline{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1.1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:32px;max-width:820px}
 .hero-headline em{font-style:italic;color:var(--accent)}
@@ -56,6 +56,13 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .btn-secondary:hover{border-color:var(--ink);color:var(--ink)}
 .award-strip{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--sand);font-weight:400}
 .award-icon{font-size:16px}
+
+/* ── HERO LAYOUT WITH PHOTO ── */
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:start}
+.hero-photo-wrap{flex-shrink:0;padding-top:8px}
+.hero-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--border);display:block}
+.hero-photo-placeholder{width:160px;height:160px;border-radius:50%;background:var(--paper-2);border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--ink-3);font-size:10px;font-family:var(--font-mono);text-align:center;line-height:1.4;letter-spacing:0.05em}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}.hero-photo-wrap{display:none}}
 
 /* ── SECTION WRAPPER ── */
 .section{max-width:1100px;margin:0 auto;padding:0 48px}
@@ -144,6 +151,23 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .footer-note{max-width:1100px;margin:0 auto;padding:20px 48px 0;border-top:1px solid rgba(255,255,255,0.08);margin-top:40px;display:flex;justify-content:space-between;align-items:center}
 .footer-note-text{font-size:12px;color:rgba(255,255,255,0.25)}
 
+<!-- /* ── INTERESTS ── */
+.interests-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.interest-chip{display:flex;align-items:center;gap:8px;font-size:13px;padding:8px 14px;border-radius:8px;border:1px solid var(--border);background:var(--white);color:var(--ink-2);font-weight:300}
+.interest-chip span{font-size:16px} -->
+
+/* ── CHATBOT ── */
+.chatbot-btn{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:200;transition:all 0.2s;font-size:18px}
+.chatbot-btn:hover{transform:scale(1.05);background:#333}
+.chatbot-panel{position:fixed;bottom:88px;right:28px;width:300px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.12)}
+.chatbot-panel.open{display:block}
+.chat-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
+.chat-sub{font-size:12px;color:var(--ink-3);margin-bottom:14px}
+.chat-q{font-size:12px;padding:8px 12px;background:var(--paper-2);border-radius:6px;color:var(--ink-2);cursor:pointer;margin-bottom:6px;transition:all 0.15s;border:1px solid transparent}
+.chat-q:hover{border-color:var(--accent);color:var(--accent)}
+.chat-answer{font-size:12px;color:var(--ink-2);background:var(--paper-2);border-radius:8px;padding:10px 12px;margin-top:8px;line-height:1.6;display:none;border-left:3px solid var(--accent)}
+.chat-answer.show{display:block}
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .hero-eyebrow{animation:fadeUp 0.6s ease both}
@@ -188,26 +212,33 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 
 <!-- ── HERO ── -->
 <div class="hero">
-  <div class="hero-eyebrow">UX Researcher & Designer · Bengaluru, India</div>
-  <h1 class="hero-headline">
-    I research the <em>why</em> behind how people use products — then design to fix it.
-  </h1>
-  <p class="hero-body">
-    Award-winning UX researcher with a healthcare technology focus and a software engineering foundation.
-    I bridge the gap between what users say, what they do, and what products actually need to be.
-  </p>
-  <div class="hero-chips">
-    <span class="chip highlight">Healthcare UX</span>
-    <span class="chip">Accessibility & Inclusive Design</span>
-    <span class="chip">User Research</span>
-    <span class="chip">FinTech</span>
-    <span class="chip">Mobile-first Design</span>
-    <span class="chip">Research → Strategy</span>
-  </div>
-  <div class="hero-cta">
-    <a href="#work" class="btn-primary">View my work ↓</a>
-    <a href="https://linkedin.com/in/chaithanya-design/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
-    <span class="award-strip"><span class="award-icon">🏆</span> 1st Place + Special Recognition · Design Hackathon 2025</span>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">UX Researcher & Designer · Bengaluru, India</div>
+      <h1 class="hero-headline">
+        I research the <em>why</em> behind how people use products — then design to fix it.
+      </h1>
+      <p class="hero-body">
+        Design Hackathon Award-winning UX Researcher and Designer who spent 5 years building software
+		before realising the most interesting problems were never technical ones.
+      </p>
+      <div class="hero-chips">
+        <span class="chip highlight">Healthcare UX</span>
+        <span class="chip highlight">Accessibility & Inclusive Design</span>
+        <span class="chip highlight">User Research</span>
+        <span class="chip highlight">FinTech</span>
+        <span class="chip highlight">Mobile-first Design</span>
+        <span class="chip highlight">Research → Strategy</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#work" class="btn-primary">View my work ↓</a>
+        <a href="https://linkedin.com/in/chaithanya-design/" target="_blank" class="btn-secondary">LinkedIn ↗</a>
+        <span class="award-strip"><span class="award-icon">🏆</span> 1st Place + Special Recognition · Design Hackathon 2025</span>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAQDAwMDAgQDAwMEBAQFBgoGBgUFBgwICQcKDgwPDg4MDQ0PERYTDxAVEQ0NExoTFRcYGRkZDxIbHRsYHRYYGRj/2wBDAQQEBAYFBgsGBgsYEA0QGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBj/wAARCAEYARgDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQMEBgcAAggBCf/EAEAQAAIBAwIDBQYEBQEIAgMAAAECAwAEEQUhBhIxEyJBUWEHFDJxgZEjUqGxM0LB0fAVFiRDYnKC4fEIU2Oi4v/EABoBAAIDAQEAAAAAAAAAAAAAAAIEAQMFAAb/xAAnEQACAwACAgIDAQACAwAAAAAAAQIDEQQhEjEiQQUTUTIUcUJhgf/aAAwDAQACEQMRAD8AWXSIMjYVt/pEGfhFS9eHWB3JNKrw8PHNZ8noyiEvpEHKe6KFXmlQgfCKs8cOIR8JNIScMRN1T9KDGHFoqb/Soeb4RWw0mLHwirSXhOHP8KnCcKwAfwh9qBxkWeaKnGkxn+SlF0iM9Y/0q204Xg/+kfanMfDEA/4Q+1R4yO/ZEqu10eLb8P8ASiSaNHybRfpVoW/DduuD2K/aiMehWwA/DX7UShIF2Iq/SLBbbUUZoTyk46Vd3Den2s9ohKb48qDjRIBuI1+1SXRJFtFEbYGKurTTK5zTENb4dtGiLiMdPKogdFtEk3QfarJvbqOS3YHFQ++jHMXUYq2RSNrTS7ID+GNvSiSW8Ma4WNR9Ka2hOM08BOKgjTVolxsi/asES43VftW2T0rKkk87JPyr9qzsk/Iv2rYEnrXtccaNBEw3jX7U1k0y0lOWjH2p8TWAeNccMF0Sz/IPtThNGtV6KPtTtRS61xKGo0q2IxyD7V4dEtW/kWiKjetq4hgk6Da/kWkn0G1/KKNk4FJOa44AvoFr+Ufakm0C1z8K/ajb9aSPWu04EDQbbPwj7UoNBtsfAtFPUVsDtUpkgo6Da4+EUm2hWo/lH2owWptcTrEhJO9dpwJfRbRfBayml3qgVz3qyu0kJLbJ5Ctvd4/SmRlm8WIrdS5HxGrFSih2Merbx46CvfdovSmyhj/MaVVDjqaL9SO82LCCEDcis7O3HiKTEZr3sqH9aO82KD3cbnFYZoF6CtRHt0r0Q58KjwRPkzPeVHRa2F1johrzsR5VnZgHFdiRGs3F43glZ75L1CgVqIh5Vt2Yx0qMROmpvpzkN0rCplj+datHv0pVGxHg9aFoJMSjBRsGnQI8abE4elASBmoOFu6K8ypPhWgHajbalkt1xvk1xKZ4CDtXuN61lidO+udq8SQOvkR4VDZxvivR0rAwxtvWBgdqjSRRTS60iq0oMg1KekoWFbcxrVTkVtiuJNT50m3WlDSbVJwk5pFtjSr7Ui1QgTM1haki2KTlmCJkmpON5p1jQkmo5qOoZz3q3v77IIDVHbiVpWO+ajQhrezySN3M5rKdwWnMOZhWV2EaTENE+xxXjQFe8m4qIWHEkV045HGKk9nfiRRvmmVq9i8ojlDvgillIxtWcqSrkHBpMh42ww286NSBzByu9b4BFN0cYpVWzUNk6bgUoBkVpkVstCSj3FZsK22ApNzvQMk9616BWqClM1BKPOQVoyhR0pTmwMnwqO8R8X6Hw5ZG41O7Acj8OFO88h8AooZBJNsLSuqZdiFUDJJ2AqsuL/bRo+ht7vpbQ30wOGPN3F+3WoHxt7TNV1vSLjkC2NlnlS3DfxN9i58fPHSqL1PV+a9ZAygKcfCST8zR11uXbDeRLm1D27cU3EoewuYLKJevKp3PlvmgT+2bjtizf6uJQPiyhOB9z9aqOS+kCBQwOOh/ekvf5RIAGLb/AM232x0q39UUQ7C6bH228UxXccst5kA/yqeVvmQf8xUx072862hU3ljaXCZ+MAqxHT5VztDdrcJyShsn+YnvD0PnTy2lmtZ8rzsp/mBoJVRJUjs7hn2maRr8GJFFrLkKcnK5PTJ/lz67etTtERlHgfI1xdw5xI2k3KXAZx3cHBxzeh9KtbT/AG0XVm4D2UclooAADFSnyznb06fKqHHAmv4dBKMUoFBFQfhj2jaLxLEFtZUjuQcG2dvxB648fmKmcFykqDlNQiBwBgV6OlbKuRWMABkV2HNmrDO9IsDilST5Um2etFhGiMlNmpy/rTSdwgLE12YcITSBFyTigl7fE5ANe6hfZJANAZZnkcgb0LJRk8rSPjrW0FsT3mFKwWxyGYU+WMBcAVyQLYkkYAxispfFZRadpUFo8kMgaNitTDSNcdeVZSQfOobG3fopbbrWi4qXsr9FnWmqK6ghh96KxXcci4Yg+lVdBfz2pGGJXyoxaa8rYy+DS0oNMnNJ7yqd0b6VsvMOoqM2+tKcd+icOqq2O9Q6C4hgNvSgbFMIr2NsZxTlZo28RUNnYL89eM4G5rVTGf56x0zurA0Ok4erKM4rSe7SFCTSErGFSz7AVR/tM9obzvLoWkTkKxxNKhx/2Z8qjSVFsN8de12KzM2maFIJJV2ecdFPkPP51Sk2qz313Jqmq3kk75OHdiSSfAeVB7i6lkmMe6KTliNyab3U/Nb5lbs4o/hGf28/70UYr2yx6l0I63rDTWnKCwj59hnwB/vULeUtIzk8xJyd6eajfrKjEZCZwgHgBtk/rQiOTMhBpjcKs7HW7DujI9aUWDnQFTg+R8Ky3XnOOn/uny20owFVsYyDj9qFz7LFDRWzgZ+XbJY4o5bWyNEDIgYYGQxwM0xsbe4wXSJjg9KIrFN7srcxw2/cGcmqZz0tjDApEbdbTlkRD3unOBgdOlezXMcC9nFzKG277Z2oE7SCUfEFHn5UiLp1l3mA8cN/aojEiT+g/BqE8F5HcWM5huE7ysp3XHQirs4D9sV4lxbaZr/eyeUysMOw8/mP2PpXPcUsbLzRrysdwfEfKnVrcSqxZuYn+VkPeX1WpcNB07/s7tLqyinhcPHIoZWBzkU461z37GPaWRcW/C+rXfOsrEQTMe7ny9Dnr866BDFepzUwhoEnhsRitGHpW5ccvmaRlnSNCzGmY0r7KXMRncRqSxqOajfjJANL6lqQbIBqN3ErTSbb1TbFL0FBsSnlaV8Delba135mG9bwW2BzN1p6iAUu1genioABW1b4rRiAKg7TRjispJ39ayuOKciY9oN6M2h2FM49Iu+cHlorb6dcr1WtBSIZu2OXNMpARuCQfMUVayn5MBaZyWVzzfw6GUkSkJQ3lzER3+b50TttYlUjINDhZXA/4dLJbTgj8I1S2gyRW+sk4yxokusgJu9Rq3glByYzTl435MlD9qBkYG24iRP+IPvS8XEkZ6yj71B7qMgnKmo/q2pR2VpNI74WJct13J6L86qZaorCS8e+1BdP0x9O0iUteSZVpOXaMY35fM+vhXPst20srpHjtCctnB6+NOdSu7rU7yW5uJWhgPQse8R/n0qOXvENogNlYQvKM4Jz3W9SerftVsY/wBscSXXKDHEw5FOXlAAB9FoRqN29wVij2LbAZ+EDqfSveaW7QyzN3RthOg9B5n9BWsSLczlIY+50JXfbyBom1FaTGLm8QJks5rqYLECUGw+Xn+9KRaDddtzOvdU941PdF0BJAwMbZzttuakX+y/OgUkD0IG1KS5neGhH8d1rIHpGhNPMgiUY8WPTA61PdO4SWY9sQgJGO9uT6geXl50d0PQobYjCRyHOO4P8xU+07S1ji5ihRiN9hSN/KbfQ9RwUkVZe6E8ERiVAoHTxLbdcDpQK7tJ7eMhYZIwBuOyJ/fNXRq+ho9uXhIjYeIFQ25mFoOS5iV1XILbH9Ov2rquS30gbeIl7Knu0LMWEnMfLoaDXJ5UIG58T5VNuIYo1nLqi9MrjxFQu7hIftFAPN9K0qbPJGVfV4saQ3EsL9r2hKDqDv9KNWt3BdovOAj9RItBDlmIY98EEA15C4V1MWeYncL0B+RpvoU3GTjT7mexljk7TBjfmWVNiD4E4rr/2ecc2XFnCNvKsqi9gQRXEe/xDbmGeoPX0zXF+n36OnZTISD1JwAKsD2c8VvwpxhGZu7p855JuXdcdA/oR41TKTj2g8Ujrx7tVXmJxQPUNT5icNUf1HjCwE9vbQXCytKoPcOcZGRn5itsyXG/QGgV8mC60jWaaSaTA3pzBaELzEb0vY2QaQbUbNliHYVdCDktYrZcoPAOE5dsUoRisnISQrSTSd3FVTWFsXvZ68gUU1kkJ6VjFmNeCMnwqsM0AJ3rKdxQd3cVlQFhF4FUOOYbUbtrW3kUbAGoTpusyTQ80uBipXpt729vnmGRWr4aIfvwKPpqBcgA0PmgijYh0FKPqE0IJ2Iobd6qXB5kFKXLxGq56O1jtT4LS8dtbMfhFRG61WWMkpWltxNKGw61TXs3iGFEnkdpbAdKUe3teTG1Qt+KSkecUMfjXEhDHAFFbW4ezkiWalbQ8hChRnxPQetUHxLqay3kwjl7aCORiG/8AsbOCQOnhUj449oFzPo406wzGkoPbSg7sv5B8z19NvGqpv73tYOzZ8BRjbzoILXobeIC6/qt1My21qpklfu+f0A8qHi0ttNjE+qXReVukKnLN6eQHnXt3qnunP7sg52U4YdW+vl+9RqSeSWYySyF3J+I+NNpfwX3+khuNWm1BltoEEEHQInj6Zqa8N6UhjAKgDG+fCoHw7b+8Xg2zy71cWj23JbqoAyR5Vncyfj0jY/HVeXyYf0bT44QOVcD5VKILKNgMr1pjplsSoGKkNvCV2IrGlPezfhDEeW1okbdwH09KNQB+UA4ApvFEe0HUelFo4VCjIqqUg0sEmhV4sdc+dRTXtHjnDgxrnwyNjU6Fv3chaZ3VnzKSASKqU3F9EuCaxnPWuabNaySWEqEoe/E/XaoNcoDK8TrgjvZHT1H+eddHa5oUd7HgxgOjcyH+lVvxL7PnnDT2X4co32OPuK1OLzY+pGRy+G82JUNwAsvKB06N51pEwRi0mCCMHI6edENY0jUdNuOyvLYr6jcUJZnjUqwwD1zW1CSktTPP2wcHjQSgubQuHZ5Nh8KHc/SpXp11zWyxtkLkEN1wfU+XhUDhuYIDzMCD1yg3o5p+t2/OVUOMn+Y7fWilHoGLL39nsQWMQ3DgjtlIDHqMd0g/ofpV0QRAINvCuc+D+IY0W37ICV4peZUz/L4gnwHrXQGlXksttmbkJGwKZwfvSaWN6WWd9kgsSkZBPWiM10q2xwRUe96VPGkJtQZhygmnIXKMTOs4znLRSd+e4Zq1VS1Nkk5jRCAAilpS8mNqPisNFgyaUEQHhS5GK1bpXHYeKNqyt0UkVlQGUrYyhW7BkIXzqVWi9nbKYZfnTGTTI1bIGKc21rMAApyKcq5GitvHXtDsXcqNiQZFOI3tZ0w4ANJG0kC8zDahF5OIJCVJFdZ8uzoLxClzpsLEFQCDSMWiRtJtGN6H2mrlpQhbNTHSHS4kXIFL0L59DSt6A8nCyywnCVHdT4PSOznmdeUIjMSdgABk1dkFtAYRsKjHEVrZJdtDcMywXiCJ8nuhVy7H58qkVqyoVnsiFq05t4v4buINWFtEyIltbR3M6s2CnaHuL8yATjyzVaatO6SPGeU5646VcWpahFeS6nr1yFkfVFa/5epECArGg227gH3PnVI6qz80zzN+JuW+Z6/1paVCr6LLH0BLh+a4znc7/pQmQ8rKP0p9c8wKODnIBof2bSzgk4HNjNShcsDgiyM2HwdzV16PpoESDG+M4qnuG9Vt9NtYzyFQCAMjOflViaJx3bPfJB7rIgzjmYgVkcuqU3pv8K+EEky1bCyRIBjcgUQSIBgKBaZxDbTphG6fpRqG6WVgU5fXNY84+Lxm5CaktQ7RgpztSnv8UQ5nYADxzTaUgQsR1xUF1+1u7xOVboocHA6DPmaiCi3jJnJxWpEvvvaHw/pztHPqMIcfyKeY/pTJPadotwcR9pjGTzLj9Kq+HhW3E+JrlpHbdyPD0BqTaRw5w/bMHnELt/8AlcY+2cVe4UJf0S87pProl0XGGn3lzy+5v2ZH8Qgjbz6UYhitby3E0LRzRsOo6j0ofaadp0tmFt1i5POEj+lK2WmT6RqIkgeaW2k2dSebl9fOk5qEv89MYj+yP+u0Qz2gcIW95pUsqIQwBI5B0rnbVbZ7W5MMy4IJG4rsvUrVLrT3TY5HjXNftQ0c2l+t0i8oIw221P8A4zlPy/XIzfyfFUoecforGSPYgr8jSVtMI5yj5XA+E+NOnA5gM8p8j0P1ofOvLMOYYwdtulejj2ebZYvBt8F1WCFXEaswHMPI7H59a6h4a1Ce80GFSQXhAids5yw8fqN64v0a+ezvo5FcrgjB8OtdUeyvX7PVrKaHmCXBAbkzk7Hp+ppW+Di9Loy2JYyBpBvnNKC3JPQ06skV0JwOtPxCABtVGnAxLYgjan0KcopcRqB0rCAMVKYMjVvhpJqWyKSbrRaCPbaHmTIFZT3T0zCKyhCKfubkFQaJaW4kIGaidxO/L1OMUb0OckjJrqoOLKbZ9E4Noj2O4FV9xBbiKZ+U1YkT82n1XvExImem5PEK1zbYD0wk3O9WPw6v4i5G1VvpRAuN/OrU4XRJeUGg462Y1GOvCUshjt+ZG8KhXHllPqHBWq3ETsJoLKdouUkHmKEZGPH/AM1YE1ri02O2KqH2qzXNnwVrBjuXiR7VlAB3zkHb6ZrYh09foG+tx6iVPxM1zZRTaXcQm3ntdLt7VexbKdmoySM+JAX12NUxqzBu0XGQScHpVm3mrT6tFrd/cLNJJOilm7TKL3eQE569cCqs1PJTcfFsftS984yl8SyCko/IEOAUjLDbGDXnYpFdoHVcdc46ilWAFio6kEnr+tax4uLRUPxp8J9PKqX2sOXssjRLnh2PT4jqMMBIX8uW/SiLazwskge0gXI6br+xNVhoBtL3ia2sdXu3gsi2ZG5uUHyBPhRe803S/wDam/gtrR7uFZx2K2vMwaLbAUjO+M7+ZpH/AI0W35SNNcp4vGJZVlxVarIUhdoyduR1wfpVh8Jakb6D4y1c86NpesWtq3b20yuJMpDKykKnzzkGry9l9vNHpkksiYJclVJzt5Vl8ymMFqZscO6UumsLEuQ8VmXxkY3Jqq+IuIexv2VpOSMLkAdWNW1qWX0zkUcpYYINUtxRw/dSxt2pkSQE/ABzhc9VJrM40lKeSNK7VHoiTXXEXEmuDSNHaSaeQ4KhisUAP5yOp9Ki0tpxHb8QvZJqhFx27QdejBiNx4dNvpUy0izh0m57Kz1PUrA83NlZim/j02NFV4O0LUdXfU7q9knmlfnlZ53Bc7bnHqAfpXoI8imqOYYFvE5FsvLQRpGu8S8N6cl9qhiuWEvZdnaOI7xdgeYKuzDf+YeFXnwVxomu6KJ5G7R1G0gXk7RfzEH4SOhHnUX0rTeH9KhKWVpAjMdyiczH+v1NF9G4ehivXubdngMrc7RxNyqT54I2rG5d1dutRxmpxKLKlkpaTqWZLlAyfDjGfA/Kqn9qehm60B5kXvIMkjyFWvZaaUXmy5Y7ku5c/c0E4m0s3WlzW5wzcrA5HXIpKizwsUhi6tTg4s4xnleKTs2wBnBBHSmxkRyUOCfAUV4ltGsdUniKlezkKnNR5SzS5JA3yDXt65eSTR4ayPjJoNWUCzdxTufhB8/KrV9mesapp2ox3FjEXuYxytCRg3CZ3UeRAzg1WOmlOeNmJydjv3c9f71P9Bk7HULcLkEMCT03+lV3esZZWujq/hrWLXWLCO9s25oZRzZ8VbxVh4EHwqSDcbVWHCE/ueuQzRSr2OodyeIDlAl5SUkUf8wBB+lWjFvGKS0JrDQjApN+lLuBSLjJxRRBkJVq3xCt8VqfiHzowA9po/CFZW+mD8OsoQihmtQ8Wwp5pqCN9j0reIBlIO1Js3uve8OuavTwWmtRNbG4DWhQnwqHcUR/iM1O7DVgYzvTDV7tLnIY71EpaUwhjI9p+RdY9atPhF8OoqsbJALw/OrJ4W2mWp47+Y7X/oseUg2v0qqvaNpo1bhi+spWCxFC7sRnuruf2q023tPpUI4phMvDuqIvVrOZR9Y2FbWHczrDmm3e2i9issb3Fj2/arcOoP4z8wKKN+qgqdvD6iql1AA95ugGD+1TriVVhtYRbboyCRuRsgHofpkf5moLdMRAJC2CNvmfKlLbfJrrDo1+Kbb3QRKCEKnbYZHl/maQgYxyFc9BTiaWLDysrAg4GDkf56UhbrtzN1O9VtkZ2STh20X3trp4DKjdQBvU/tL2NIOxtdOdc7DO1I+z3h33nS1eRSeYk1a9vw/a29upMKLgbkisHk8j5tHqOFxmqkV9ZaHJcN29yg655QNvlVxcD6bFb6X3VUN0OPCogpWe9aC0jLJGQDJjA5vIVZPDtqLTThz7Md6z7rHPpmhVX4sfXlikkXKBv1zUYv8ATY7k9lPDnG6sOo+VTOYhrctg4I8PCgl4lw0bNaqwKjr1rP8AT0aXfTIbc8GWUqlo48E9QwzTCL2dh3DsQB5LsKNQ8T3FnqrafqkSq4xhgPiB8al1jdW00YaMjfyppWSzsB1RI3o/BFnZBWMXe6586ltrpUKL+Bg46gnO4p9CVI2XrT63iXHdAAO+1L2Nvtk/5XQ3ihAjwVzio/xCyxRAkeBHzqWOvJvtUK46kMGkmUYzuf0qmK2WFbftnInH3ZNxPfflLmoIiY28DVrT6LHrOozXU+4WYgDOd8fr16VBNU06ztb64FnN2kK/D6nx/XNe24tizw/h47mUuL/Y/sV0JS/KJCPw3zjz26VOOH25lWfcF25gc/Y1BdP/AN3tgQRzkHmHXc9f2/Wpbw7IDpducnm7UJ/WrLSmpl+cL3S3dtp8akk9vDNEp6qQ+/0GPsPSrutZRNCrqCARnBrnf2fXZh1BXbDe7MWxvnkY4P0Gf3866A03lMskaMcDDrv1VhSLfZZND512pq5w1Ppf4dD5PjNHEpkeZ3rz+cVhrB8YogSQaZ8FZWaZnFZQhFRe5FUNCdTPZwFGO1SqYhEbaoZr8pAbl6UUW2ibKvF4BIdRa3nZAx5T0pxPK8y5XNR+CXm1Dlf4c1JEh/BUg7UM54Ww46a1nmns3vID9asvhXeZarYARzhhU+4Tu17RQx3zR0y+SZWo5MtQp/uefSofqrlA+Bk+WOtSkXQazwPKofr95Bp9nPf3TFYoVMjkDJAHpWyrOieXXqRyX7Qbc2Gry21tFIIQeUBhjlHMR9OgB8DgHrmqzu7h+bs1GAvgfA1bvH2oHUdVmvjp91BErFQZXGSGYsBsMeJ8TVU3kcMcmYIlTPXcn96US/oDl0kCOxZuVpMhc7Dzojo+nvqevQ2UeMudh6DrTC6uQgPiRSGi6zJpXFthqkhPJDKC6j8h2b9CaizfF57OrzzXl6OtODNGjstOjQKAqgdaJcQXSw2zqrAeA38aa6RqkUukrJC4IIByPLFAJ719U11wSRFbtygeZ868pLXJ6e2raUeiRaOscWnWwCguXLSHxzU0tbiPsVw3QVVl7I0NqWimeNlGe6aQ07jaWP8ADubjLDo2etD4N60HGyKfZd8VxH2B5mGG2Ga2W7tYlxJIgA65NVBPxxp0iqp1HGPiy3L/AOfpSMWvRahKFtFlmHQFFJH3NLuqS7aLFZB+mSXiyGxv9cWa2dORI8My+LE5/wA+dMNK1dtPvEtppevwMfH0oppmnmSz5riLHNvv1FD9b0ON7d16eIPQ1MPpM6UutRPdNvluEBD7Hxo3DP2bYZgV8DVLcKcQXVrfHT7lyzodiDnmHnVu2cnvVjz43xVdqcXgPkmtHtxeIRyg5qHcaMLjSJcgcqLuPp/6o5ZHtg7HoGIH7UH4y5Y+HLhh4If2qqv/AEgZrIs53umGn6BeCGRVnkDiNiM8jNtzfaqtvLAWZ5WnMhC8xbzqwmhfW9G1S5t5ObklaKNV8kAz996hmtQ9jYQyMoYSMUXlHQjB/UMDXquG8k0ec58dimM7ZT7qXOPhIPpn/P1qVcLDNkqkbLKD+hqLyBY7SCMZHMOYnz8B+v7VL+FoSNPXYgl+vn4Z/en7P8mXX/rCy+DX5NcClRyyo0ZycbY2rovRDIYLSaQnn5TBIMY3xkVzXw7Kbfia2dCdpUzk4322/eunLaIWtvbMi7sYZCDvsTyn60jP2XTC0q/g5xQx/jNHZY/9xLUBbdzRQF5G2ARWq/GK2HStU/iCpBD+mHYVlZpo2FZQth4VfLIWQ5qL6xavNzYU1LUjDbEUq2mLMu6irIyTXRNsnusqdNJcT83Kcg1IIbSUQqrDapuOHoRg8gpWXSIkgyFG1C1oK5GdEJGlyMQTvUh0i0kt5FIyKexwRo/KQMUSt4AWUoAatqqbkgVcvLQ9ZXji2CuMjFM9Vs7LVLCeyu4u0hmRo3TOMgjBpyg5IgMeFJcvNOAQTWxOHhDSy63UUvxlw+y8I6rw7qKwkFYriwvWPKfwzy8j53JKkDI28djXLt7HJDcSRSoQQcEN/KPKvoNq2jabqCxve2sUxjUhedQSueuK5D9q/CsGm6zdz6fEQI7qRTzNnuk5AA8ME4P08zSjsUmiiE29TKie3EjldwcZwaG3MJCkEYKnejUxKDmOFIoPcy9o2BjNcEy9PZFxEdS4OWzmkzcWOIHBO5T+Rvt3fpUj1KZ9B1Ge5CGSGcCRceY6iqA4P4gk4X4oi1EFmt3HZXMYG7RnqR6jqK6OWW01rQ0TtI5YZVEkMqnIIPQg1gcyj9dnkl0z0fA5P7KvB+0RRuNPerxrZNOul8OdoiwP1H9q0N3BI34trbtnwePH70Xj0R0lQRBRIMgA7Z9KfpbTxALLayKf+nIroSr/APFG5xoxlD5PsAW81nBmaK3sYj6KpP8AejVjq2pOw917dsb4iiP9cCl47TMgKWxyfyx1ItM03UpgEhtHVfNhy/vUWOK9jsIQj7BT6/xfHalre1nkYdO2ZUH6ZqOalrvtEuuYN7jDCu7EqzkjyBOP2q4Lbh5I0D38wyR/DXw+tNtX0q0ktuXslwxwqgYpJ3Qi+kmL3+MuolXcBQ6hqPEqS3GQURmZiOpJwKvqxlS3sFUncbjHyqEaDo/+nySTAAM/l4CpOHZkVVPhSPJs85aheqHjHGF7DlSEjbck/eoL7Xdbi0rgW+nL47OJj9SMD9TUuM4htubfauav/kJxaJ5LXhu3k7zMJ7jlPQD4V+p3+lHwaXddGKF+dcqqpTZUWicQavpzyxWV0yRzEu4K8wyBu2D6U4nvZrpI7aXJWN2bJGCzHAPTp0Ax6Ulwxa209zJLcyhWjI5ASfHOTgdfKt5baNNYeG3ctErbE74HjmvXqMfJ4uzyMnP9abfQ/kiE08aBe6oAJx5eX1qe6PGkMJxsqr3fsaiVtCGljKgEk49OtTC0XFmVUZOCNvlUWPoOld6SHQELapFMWJ5p0I8vGurXBn0i2nAwyxMB9QrD9jXMXDVjPKbOOPAL97LZwMggH9a6m0JhecL26yACQwqSW38MhvlsaUl7Dn6QUuCv+irIMYYcwx5Hf+tRrPfNGTcc3B6ZTkeJjC6+RUlf6UBDb0UfQtL2OAdqyP8AiVoDtSkO8lSCH9OGwrK20/4RWUBYV6ECnOKcpcIoAxWnKOQ0xuCVO1ZdXIcH2aFvHU10Go7lDgUpKVeM4oDBNgjJotDOhiOa2ab4zRhXcaytgmdWEu1PdPZgRnNZJGGPMKVtV5d8VpUZqKkmHomBh3ArIYw91imscwCdRXkOoRRXWWYADqa0+S06hl9of39qTFkHeqB9pUGnXttqMcuIpWdnSUZJ7RQoMbY6MAOh8CCCaujiLi/RdI0v3241G3WMYz3wT1x061y5x9xzpV3xLrLTtLY+9RqY5OyJ7VkBBjZQRk5xhjjY+dYcn6Jqg/ZS2qwyCWUBkCZyMDqKANAzPld6NSxyyEO2VVtwpOTj61pboqc0oGSAQM+Z2B/erUyxg1UyGDfEBU69m/GL6ZeroGoSn3KdvwHY/wAFz4f9J/Q/OoM6mO4ZfImkZVPaYGRg+FVXVqyOMOm11SUonWdrieLfPOD19aMwmdIwPiGPGq09mnFC65w+kU75vLcdhPk7ttlX+oH3Bq1rNgYseHrXm7o+Esf0er4tinFSX2bRzsiALhWzRewnuZ3C83L548qQt7dHPeAP0qQWMEKjAUZ+VK2NGlH0bxWvMoMneI6ZrWS0EjAcoz4ZFEMEju/D51sECqW8aVcv4A3gJa0WOMIBgiteVYlyRinczrguxxvUW4g4kg0+3ZUIeY7Kg8aqWt4E3i1jHi/iiDRtMYhg0rAhI89T6+lcY8QarcazxXfalcyF5JpS2T5DYfTarr421aYadeahcSc83Zty58PQVQioSwPj416f8PQoJzZ5n8xc5NRHVqzKxZTggdQd6MaepEQd9ub9vKhFsNigG52o0rDnCeC7CtrfoxCT6ay8nNkDA3HlgbfpUl0ZxIpUnIVyN/n/AGqFaXchQxdsDJyfSptoKjnXlGWOCQPl/albRyl6XLwXodw9sk7bJyO4CrzYVByg+pLsQB48pq9NF0y9j0zT7cxhD2KbZ6oyjOPsf2qsPZ/qEP8AsdLcBmUhBbhdgOXoARjqCxJPqate71SNWjs7aV/e5U/DLHuwJ+dgOnmB548jSur7Omnprq9rNBpd/cKUNu96ACrZ5iY15v1B/Wo4jb0e1jUEHCVtpyBQkUjHbG53yT9TUaWQedWLPoWl7H6naloB36ZpJ0p5bHLVJyJFYDuCsrLI9wVlVsMgIPdprcL407UbU3uBWCbKB26tkUol2QOUnFavs1NZRRQtlB6gpVKa7CyXgC01u9XMA3OKQhVmGKa6hp80y43xW1xfyHpMyeRwseo2PEwXP4lCLzie4aUm3ALeAboa8XQTklwxpN+HTKOSJgp/MWxited87I/EWhHHkhhqXG1+kD2sugaaiOhSR5oi4Kn0A/Sqf4l07TJrI3dz720UZKxLcPhEPXkjDEsQPMnbwHiJlxNcx8PSOupag06hhzQiVuUD/mI+Hrt51UPEvEK6xqB91L+6x4Cggjnx4kf0paOp/IuaSXQEvBzyM6HIOw2ofJIISFztnrRCaTFojMpHaHKjO7euPLwofK6leY48gDvVyZRoyZjLOz5zzGkDKhZyT443pWcNDMSOh6UPLAMc94nwFcQwzwvxNdcNcTRanBzNHnkmiBx2iZ6fMdR611Xw5xBY6xokN/ZTrNFIoII/zY+lcdchzkCp37O9fu9K157awuHFtLv2UnQnzx4Vn83jKyPmvaNP8by3XNQfpnV9pdqQCrY/pRe3vmyAdh4nzqrrPX7gQB+Qg+ODmiUPE0zEAIWHgCK87ZWz1ELolsx3iCH4htTK912K3jILrkdd6r469qMy8qLyVqkdxdHmnZm+fSlJQwPyT9BPVuKbmfMVknMfzHoKit1DKQ09xJzO3V2NHxbKo3wfQUF1xgtu3eAUDcYo6/4iux6io/aFdFrI26NgO2PmB1qt2tTA/KVJ8CfCpjxXK1xqYUtkIDio3JM8yBHZdsDmbYjAwBn5V67hx8a0eT58vKxsZqOxcuegGaJKjB8+dMWR0nEbDPPsAN858qK2eZVAYYk+FgfMU3gghWyBHMnmMmptw9PJHJHyEdoTheb/ADpUTtrdu0kIIUBAcn5ipRot2dP1izu1UOIpQ5X8wBGR+4qq3tDNTwujhPWYo5I7cO5UyK4iZeYBlO5OOv8A/I86tmw1i1trRY+zcyzMcsdmL9ctnpt9vkKrHgqxg1HjuO6tVjSJIomWV/hLseuPkMbdcGr9stJhlaSRj2sshCvPjqD4DI7q/wB6ReaWyAd/GPdECjB3ORvzE75oYIZcZApnxNxOnA/Er6BcQo2mXEQuLQFuZ4S2QRnxUMBkeTbdMVMNBhh1fR4L6NMLIit9xRLoqaI2GlQ95TRGwl5nG1SCbREwdhSdvpaI+wo09Awd2rYQVlPoLQKmAKyuw7SuKb3FOKb3I7tefZtL2DnPeNIuM5pRv4mK1brQFyF7QDmBor2SOm4oVbEA0QNxhQAcVZCLfopsaXs1lhSNTlRUC4rkjjiYROXmlPZxx5wpY+dS3XdT07SdLN1qN/FbIdg8jYyfIDqT8qqHiT2h6Y9rJDZ6TNdoWULNOwiXJOMhd2HzOK1KI2Ne+hV1uXcYkG420yWxsmieWSSYEHKAAKT1B8WOD4emfCqxNpfe4zXQ5OwjcRk5AJJ6d3OT9qsvibiL/VLZVvLexQhTl0Vix28ST4fKq0upYo5cwyyMM53rUpTzsVvrlB9g6RLzOXSVgw3IH6fKtTDcSAMYyEHTfb5epp57wWGSpyax7rkh/Fc+SqPGrsFBGW0N3alB/FX/ADFB3hkiBLoQRtROF5hcmbmaNj0XwxW0twh3njxnxxkVP0cCY8s2G8PDzqQcM8seuQse73sDFMIzbSzckb9fAKKO6To7SX0Loxzzjp5Zpe6S8WmMcaL800XbouJbZQd8jNF1suRwyDKk9fKhPDyFYI1fwGKmUVvlQVHSvM2Sxs9RFGlnaEjbai0VmQmCM/OtYAyjAxg706BbGDk+VJWPfQ1FYhs8KoGO5xUH4mugkEoZuXPTNTe9fkhOelVHxnqbKsrjmZIxlseVHxoOc0gLn4xbK/1Rxcakw26lifIYqOXEQ7d0U4XHSn17rNnJKrpI4JGCWGM/SmD3kJOexDnzJxXraYuKSPKciUZNjOTnHKQcFDsRT+0neM87DIJByP8APWkOZWO1vyqfIk/vXoZoGHLnl6j0pkS3CTWrpMoDSAZUDfod85zXltczpAUnIUq/dyegPXP2oTFeK0pYJyqwyyJt88D+lEZRO9issLK8Wf4qLuv/ACsOoqPH6LE87L24I4j4cseFYYItd1CxvGYPcbCSJnGQGAxldugBqw29rcdlayRJq0t4BhAILVoS7HYDLZ+gHpiuVNF1TXtNuA+nazNaeZiwfkcEEZ9akAumum7ee/vpJgd5ZpeYk9cDOyjr0HjVEuP3rLo26uycce8WatxdxxGl0qwLZRNCqRnnEe2SGYfE22/hmugeH7y/4as+HtMWYvZ3kEa4fJKuU2x6Eg7etUp7K+BpOIdXiupYyNOtn7RioJMz7ELny2BJ6AZ8TV4XXZ657RNH0exZZINFb3u8kU/AeXEUZ9SSWx5D1qq1pfFfR26T+OclRzb5pZOVj0rVVGBtTiNcEbVSpA4LxAco2rKVQbVlW+QOFR03uOn0pfO+9Nrhh51gZvo2dwHMcNSbGslYc+1aZycjpV1fH32RO/OkKCVYlLEgAbkk4xVXcV+1G899fT+HHSONe616V5ix8eQHYD1PWnvtI4nFnYf6HaS/jzr+OQfgj8vm37fOqhdvxetadHHSWsZ4vH81+yz/AOBG/wBXvbrtLm9vZ7q4C/xJpC7D5Z6fSo3d3kktpz9eRgcDxpzcSfhzf9Bx9xQeBn7Fg5wadSzoZ5P+fCIP1u97aZGiOVwBQS4eSMnAx86J6pBJCO3CDkPTPSmsqrJBlQObbcnrt/4q5Yec5Dl5fJDBHEhIWRkbrsK0RAlzG9xzFT0kzkGvDFJ7wHAAG3MK3glkgmMZwY2O6ncGiQq0F5AJYgAFfbYeVBbiRXiZEOzDdSNwRTwSrB3kOFf/APU0xRe0uMgdTQthQhrNLBSl4j9N8VbvC+khI45OYEY3J8BVYLBjfFW17P7g3mjcvMHkgbkYHqPI/wCeVZ3Pk4w8ka/AqSlj9k4s4vd2TqKmViQ0KnGdutRIO7oFaM7dD5VJ9EYyWgV88wPT0rAsmpLTbhDAsseRsMCt3I5eXG1LKuBtvSUq4FLNaXATWHf3RsdDt1qvdQ0ePUoJ7eZAVlUggHf51YmrIzxCNPHwFBktOzuQki4yM5o6p+D6AshqKP1LgFrJ3ZeeVBuQ3X6YoGun28crDAfI7vjt4ED71furWcSyCQAHfGPpVOccW8dhqccsEirIxLGMeW3eHlXouJynb8WYHL4ka15xI69rD2RYuA42GD8WBTVO+3KcelJvMVwTnvHqP2pS0U7HlwDlR6mtVIxpez0KUfcbUS0+ZkmKrKU5lyfLI8/88aZOUYAnCAErzb5NexSBTlRuwx9KNIhEii0+1u8mOURSdendP9qlXDC2WjX0dze6BBrXI2THJeNGp/7QNx9fGoJbzKOTAw3hvn6edH9MbtZlImliycgq37iqpb6GYeD9o6G4c4i/2itWtL/iPRuC7Jdvd9PilMxXOcCV8IvzAz1NT3hi+0bROIV0rh2KOaxaEvJcIzs0j83xyM27Mc/EflXNMkgs40HvU8jv3uVjtygZyaMaVxTqVhPFc6TqdzYSKeblifuP6Oh2YehpeVWjtfEdq2B2LZ3z3AyVAoxCcgEiufOFPblJaziDi3SImtyB/v8ApiHu+rxEk49VJ+VXzpWp6brGmRahpN7BeWsqhklhcMrD5j9qXlFr2L20TqeTQXTGKykFcgVldpRhTD3QxsabS3GelDUndzgUTs7J5SCwpWulRHJWNjZIJJ5NgcUjxFdQ8O8L3Wq3GMQp3VP87HZV+pxUxstMCjJWqP8AbpxOkuqpwvZuOysyJLgg9ZSNl/7VP3amIR8ngfGr/bYkVZfXtxfXct7dymSaZi7sfE0PmJGGGTSjvmMUiWwxDdD0p1LD0f1gnLujHzXFDI15eYfan4c9oyehx60yc8kgz4nwrn7KJpMT1SMNw/k4LBsUIt4W5MMgYYx9KOXuW0d0/wCf+lN7eHmtVGN8USYlyOOrJaC/dF5wQBTCSzlSQkRlgT1qQtbHx2NKJa5TB/ap0WfC81hEJba5k7ix4HnnYU8tNP7NMvktUga0UdBtWotxggDwrnI6vhqv2CDHgEEbj9aJcP6rd6BrUepWveK7PEfhkXxU/wCbU3ZCXYAd4Vqu+370EoqccfotUfF6jpvhe+0XiTQRqelsJMD8SDA7SNvykefl4HwqSpYiLvInKcdOlco6LrurcOaqmo6PePbzrsR1Vx+Vl6MKvPhj2x6Jq0KW+vgaXeYwXOWhb1DdV+R+9ed5n46cPlWtRp0chS6fssSMgAedYYGmlBx3adWCWl5ax3UFxHcQuMq8Thlb5EbU/wDdkB2H0rNW+mNYvYFfT2kY4jwOmcULvdGcnmLFeXxFTMIFTFVb7SvaTZ8PQPpOkvFc6s4wcYZLb1bzbyX7+tlVE7ZqMCJWKK1kV9ous2Wh2XuzTI96y5jhjbvDyZvIePriqVu1kv2kuJJmluGPMS+/N5/L5U5vpbi7vpbq6meeaVi0kkhyXPmTTXB5hyA+fWvVcTjqiOfZ57mSla//AEC2hLIAc5B2B8KUg54HBwTjp40ScRSKXdSG8SPGkI0jZzyglj+lOpmY6nonPEZraJ0Q90EP++aQQMOhwaIxI2cqSB8qXWOHn53Qb+Q61OnKh4MbeOR1zsB+YipJYIz3DyOpEcIyd/8AOpockyqD2aENjAY+H0ohp740ck5zJJgn0A/9V0n0McWjZ/IIQ3UtyxOWHhgnORRC1kKEDO1MIVAUECnkfWq/Zs1Q8fQctb7kGWbpUr4G4m1TQtfe60W7a0LnmlRTmKUDfvp0Pz2PrVel9tqM6ZNJa2fMpHPM3IPMKNz/AEqHFNDHxn8ZLUdncB8aWXG3DXv0KCG6hcw3VvzZ7OQeXmpBBB8jWVzdwjxVqPCWtx61pXNICoS7tM4W5j8vRh1U/MdDWUs6nvRj3/j7IzfgtRaNhpBVhzLUns7FI0BIpeK3ROgGacBftS6E2NtU1C20TQLvVLkhYbWJpnPoozj+lcVa5fz6nqF9f3DEzXMjTsT5kk/1rob28cRLY8I2/D8T4m1CTmdQdxEhz+rYH0Nc2XTYHON8bEUxTH7Nn8fV4wc39iEMgkgBz0Ga8kPPGRncdKbAtbzFc907qfTypV2DJzKfGrvseUtQ2WXN5Gh2YHGfMUjdkCMnxFezE+8QyjJKOM42yM70hqTlMgGpKZS6Y7m/E0gnPVs17ar+Au1Jwtz6JHltySKXtTiPbwofsOK1pipiGScVqyY8MZ3pYHPXpWpwx6USLHEbMteRqA25pV12zSfKQwNcVyiMJ4hHek+BGax7VZm5kblbb607v4wCsvlTcBhnsz6ihTKZRW4xu0LR7MCG9a0VmGeUEY8aeJdxsOxuFCsTtmskhK7x94DwI3otAcPuIS4Y4917g3UFn0u4JhZgZrSQ5ilHqPA+o3q9bP268IXOkNcyx31vdrEWFq8XNzNj4Q4267ZOK5reEE5xn50tGEjGWz9KVu4dVz8pLsmu2ceixte9rXFuvRGKOdNLgbcx2RKsR5FzufpioBIGMhYnOTknzraJwTkYNLpCZjnHd8W8BVldcK+orApScl2MjGWIUDLHpWskawRlNiT1YU/5Qshji3z8T00ZRNccoG2cVeVOC+xtNEyWqDk3Y5pTToOW0uJiO98IpxdDMgA6KMUrCvJpBIHxNg1P0Aql5/8AQ3hVShGMY6DFauhOyrtT2KIdnS6xjYY2qUT+nUCWgZYskdaLW8ITT7VT4sx/akZlBYL609ACxQKcbBif0rmyaqvGTaHKDCgYpRpAiYB73lTZpuXpmnFvHkCZ8Y8M1Azv0hxbxsx7w3NEo3Bu+RNhCAo8s+P60xin7KFpgBlfgHmfCnFqORct1O5PnUtlsVhJdPuOXG/XesodaynK742rKhNF6fR14o3pZemaysrOPJ/ZyH7VOIG1r2p6hPzMYYG92hB8FTb9Tk/WoTKykEHGDWVlPQWLD0sF4xUUNJY2Kcp2HgfKkQ5VScEjxArKyuZDGt62ITIh6DOKaatKHt4pQc8wB+9ZWVKFrfTHtkQdCgOc5yf1NOoNlxtWVlQvYzX/AJQ5z3cVr0FZWVxcecopJuvSsrKjQWZKvaWrDG+KHozKAfLbFZWUP2Uz/p7Lbpcx5AGR4eNMxPdWjcsiNNEPLZhWVlHEps6XkvY4jvrGfrKmemH7ppUe5dTMny56ysokUxsb9iovtJtxkSQE+OSWrw6k15hLZG5OmSMD6CsrKjxQcbG34mSyCGHsUOZW6nyra0TlBkPh0zWVlc+g13L/AKEnPNzMd8+Jp2w5dLQebisrKlnR+xWIEoNt6W3Ax6VlZXFqEWAaVQN8VtcShXjXJ2Xw+dZWVxU3iZrDIHkLue4u5p4szSkYAAzsKysriYMdjDOsee7HucHq3/inynCgGsrKkYiEoWXCnFZWVlFhbp//2Q==" class="hero-photo" alt="Chaithanya M R">
+    </div>
   </div>
 </div>
 
@@ -243,33 +274,33 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 
       <!-- MAVI — Featured -->
       <a href="https://www.behance.net/gallery/228418839/MAVI-Playboard-Empowering-Autism" target="_blank" class="work-card featured">
-        <div class="award-badge">🏆 1st Place + Special Recognition · NID Alumni-led Design Hackathon</div>
+        <div class="award-badge">🏆 1st Place Hackathon Winner + Special Recognition · NID Alumni-led Design Hackathon from DFC design community</div>
         <div class="work-card-meta">
           <span class="work-tag">UX Research · Accessibility</span>
-          <span class="work-year">2025</span>
+          <span class="work-year">Feb 2025 - March 2025</span>
         </div>
-        <div class="work-title">MAVI Playboard — AI-powered learning for autistic children</div>
-        <div class="work-desc">Led end-to-end UX research for an AI-assisted sensory playboard. Conducted 15+ interviews with parents, educators, therapists, and children across special healthcare clinics. Key insight: every autistic child is different — the system had to be radically personalised.</div>
+        <div class="work-title">MAVI Playboard — AI-powered playboard and smart companion app designed for autistic children</div>
+        <div class="work-desc">Led end-to-end UX research for an AI-assisted playboard. Conducted 15+ interviews with parents, educators, therapists, and children across special healthcare clinics. Key insight: every autistic child is different — the system had to be radically personalised.</div>
         <div class="work-footer">
           <div class="work-skills">
             <span class="work-skill">User Interviews</span>
             <span class="work-skill">Field Studies</span>
+			<span class="work-skill">Information Architecture</span>
             <span class="work-skill">Affinity Mapping</span>
             <span class="work-skill">Persona Development</span>
-            <span class="work-skill">Journey Mapping</span>
           </div>
           <span class="work-arrow">↗</span>
         </div>
       </a>
 
       <!-- WeCare -->
-      <a href="https://www.behance.net/chaithanyamr" target="_blank" class="work-card">
+      <div class="work-card" style="cursor:default">
         <div class="work-card-meta">
           <span class="work-tag">UX Research + UI Design · Healthcare</span>
-          <span class="work-year">2026</span>
+          <span class="work-year">Jan 2026 - Present</span>
         </div>
         <div class="work-title">WeCare — Healthcare platform for rural Kerala</div>
-        <div class="work-desc">Sole designer on a complete healthcare mobile platform — the first healthcare vertical within a rural Kerala super-app. Led user research with 50+ participants, uncovering that 68% prioritised confidentiality and 42% were price-sensitive. Delivered 18 screens from research to production-ready handoff.</div>
+        <div class="work-desc">Sole designer on a complete healthcare mobile platform — the first healthcare vertical within a rural Kerala super-app. Led user research with 20+ participants, uncovering that 68% prioritised confidentiality and 42% were price-sensitive. Delivered 18 screens from research to production-ready handoff.</div>
         <div class="work-footer">
           <div class="work-skills">
             <span class="work-skill">User Research</span>
@@ -277,48 +308,63 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
             <span class="work-skill">UI Design</span>
             <span class="work-skill">Figma</span>
           </div>
-          <span class="work-arrow">↗</span>
+          <span style="font-size:11px;color:var(--ink-3);display:flex;align-items:center;gap:5px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            NDA · Screens on request
+          </span>
         </div>
-      </a>
+      </div>
+
+    <!-- </div><!-- close work-grid -->
+
+    <!-- Bottom row — full width each -->
+    <!-- <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:2px"> -->
 
       <!-- LyricLab -->
-      <div class="work-card" style="cursor:default">
-        <div class="work-card-meta">
-          <span class="work-tag">UX Research + Product Strategy</span>
-          <span class="work-year">2026</span>
-        </div>
-        <div class="work-title">LyricLab — Offline-first songwriting workspace</div>
-        <div class="work-desc">Lead UX Researcher and product strategist for a mobile-first, offline-first songwriting app. Developed 3 songwriter personas, competitive analysis across 8 competitors, full information architecture, and user flow documentation for the v1 release.</div>
-        <div class="work-footer">
-          <div class="work-skills">
-            <span class="work-skill">Competitive Analysis</span>
-            <span class="work-skill">Personas</span>
-            <span class="work-skill">IA</span>
-            <span class="work-skill">User Flows</span>
-          </div>
-          <span style="font-size:11px;color:var(--ink-3)">Case study coming soon</span>
-        </div>
-      </div>
+		<div class="work-card" style="cursor:default">
+		<div class="work-card-meta">
+		  <span class="work-tag">UX Research + Product Strategy</span>
+		  <span class="work-year">Present</span>
+		</div>
+		<div class="work-title">LyricLab — Offline-first songwriting workspace</div>
+		<div class="work-desc">Lead UX Researcher for a mobile-first, offline-first songwriting app. Developed 3 songwriter personas, competitive analysis across 8 competitors, full information architecture, and user flow documentation for the v1 release.</div>
+		<div class="work-footer">
+		  <div class="work-skills">
+			<span class="work-skill">Competitive Analysis</span>
+			<span class="work-skill">Personas</span>
+			<span class="work-skill">IA</span>
+			<span class="work-skill">User Flows</span>
+		  </div>
+		  <span style="font-size:11px;color:var(--ink-3)">Case study coming soon</span>
+		</div>
+		</div>
 
-      <!-- Payment Terminals -->
-      <div class="work-card" style="cursor:default">
-        <div class="work-card-meta">
-          <span class="work-tag">Interaction Design · FinTech</span>
-          <span class="work-year">2021–2024</span>
-        </div>
-        <div class="work-title">Verifone — Payment terminal interfaces</div>
-        <div class="work-desc">Engineered UI components for global payment terminals at Girmiti Software (client: Verifone). Analysed user feedback to identify friction points in payment flows and redesigned interaction patterns to reduce error states. Maintained design consistency across global markets within Agile teams.</div>
-        <div class="work-footer">
-          <div class="work-skills">
-            <span class="work-skill">Interaction Design</span>
-            <span class="work-skill">Error State Reduction</span>
-            <span class="work-skill">Agile</span>
-            <span class="work-skill">Global Markets</span>
-          </div>
-          <span style="font-size:11px;color:var(--ink-3)">Engineering role · UX contribution</span>
-        </div>
-      </div>
-
+		  <!-- Verifone -->
+		  <div class="work-card" style="cursor:default">
+			<div class="work-card-meta">
+			  <span class="work-tag">Interaction Design · FinTech</span>
+			  <span class="work-year">2021–2024</span>
+			</div>
+			<div class="work-title">Verifone — Payment terminal interfaces</div>
+			<div class="work-desc">Engineered UI components for global payment terminals at Girmiti Software (client: Verifone). Analysed user feedback to identify friction in payment flows and redesigned interaction patterns to reduce error states across NZ, Europe, and global markets.</div>
+			<div class="work-footer">
+			  <div class="work-skills">
+				<span class="work-skill">Interaction Design</span>
+				<span class="work-skill">Error State Reduction</span>
+				<span class="work-skill">Global Markets</span>
+			  </div>
+			  <span style="font-size:11px;color:var(--ink-3)">Engineering role · UX contribution</span>
+			</div>
+		  </div>
+		  
+		  <!-- Empty space -->
+		  <div class="work-card" style="cursor:default">
+			<div class="work-card-meta">
+			  
+			</div>
+		  </div>
+		  
+		</div>
     </div>
   </div>
 </div>
@@ -331,12 +377,12 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
       <div class="bg-grid">
         <div class="bg-intro">
           <div class="bg-intro-title">5 years building software before designing it</div>
-          <p class="bg-intro-body" style="margin-bottom:16px">My engineering background isn't a career gap — it's a lens. I've sat on both sides of the design-development handoff, which means I know exactly where communication breaks down and how to prevent it.</p>
-          <p class="bg-intro-body">Every role below had a UX dimension I didn't have the language for at the time. Now I do.</p>
+          <p class="bg-intro-body" style="margin-bottom:16px">As a developer, I was always the one questioning design decisions — noticing when a flow felt off, when an interface asked too much of the user, when something technically worked but humanly didn't. I wasn't just building software; I was observing how people struggled with it. That quiet frustration — of seeing pain points and having no formal way to fix them — is what pushed me to stop coding interfaces and start understanding the people using them.</p>
+          <p class="bg-intro-body">Looking back, every role had a UX dimension to it — I just didn't have the training to act on it then. Now I do.</p>
         </div>
         <div class="bg-timeline">
           <div class="bg-item">
-            <div class="bg-year">2021–2024</div>
+            <div class="bg-year">Nov 2021–Jan 2024</div>
             <div class="bg-content">
               <div class="bg-role">Software Development Engineer</div>
               <div class="bg-company">Girmiti Software · Client: Verifone</div>
@@ -345,7 +391,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
             </div>
           </div>
           <div class="bg-item">
-            <div class="bg-year">2018</div>
+            <div class="bg-year">Sep 2018-Dec 2018</div>
             <div class="bg-content">
               <div class="bg-role">Senior Software Development Engineer</div>
               <div class="bg-company">Impelsys</div>
@@ -354,11 +400,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
             </div>
           </div>
           <div class="bg-item">
-            <div class="bg-year">2016–2018</div>
+            <div class="bg-year">Feb 2016–Sep 2018</div>
             <div class="bg-content">
               <div class="bg-role">Project Engineer & Software Engineer Intern</div>
               <div class="bg-company">Axiom Consulting</div>
-              <div class="bg-note">Independently designed and developed a B2B turbidity calculator — replacing paper records with a centralised database. Co-developed a logistics damage-coefficient calculator. Facilitated usability testing and feedback loops.</div>
+              <div class="bg-note">Independently designed and developed a B2B turbidity calculator for a global beverage brand, replacing manual paper logs with an automated system. This significantly <strong>increased operational efficiency</strong> by removing specialized lab bottlenecks. Also co-developed a logistics simulation tool (VEOL) for damage-coefficient analysis. Facilitated usability testing and feedback loops.</div>
               <span class="bg-ux-note">UX lens: democratising complex lab tasks for non-specialist users · the spark for the career transition</span>
             </div>
           </div>
@@ -378,7 +424,15 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
         <p class="about-body">I'm a UX Researcher and Designer based in Bengaluru. I transitioned from 5+ years of software engineering — not because I wanted to leave tech, but because I realised the most interesting problems were the human ones sitting in front of the interfaces I was building.</p>
         <p class="about-body">My research has covered rural healthcare access in Kerala, AI-powered learning tools for autistic children, and offline-first songwriting apps. What connects them is a consistent research process: understand the context deeply before touching the interface.</p>
         <p class="about-body">I'm particularly drawn to projects where the user population is underserved — rural communities, neurodivergent users, first-time technology adopters. These are the contexts where good UX research makes a measurable difference.</p>
-        <p class="about-body" style="margin-bottom:0">When I'm not in Figma or writing research reports, I'm usually reading non-fiction, exploring Bengaluru's food scene, or going down rabbit holes about design systems.</p>
+        <p class="about-body" style="margin-bottom:0">When I'm not in Figma or writing research reports, I'm usually reading, journaling, traveling, making origami, photography and exploring Bengaluru's food scene</p>
+<!--         <div class="interests-row">
+          <span class="interest-chip"><span>📖</span> Reading</span>
+          <span class="interest-chip"><span>✍️</span> Journaling</span>
+          <span class="interest-chip"><span>✈️</span> Traveling</span>
+          <span class="interest-chip"><span>🦢</span> Origami</span>
+          <span class="interest-chip"><span>📷</span> Photography</span>
+          <span class="interest-chip"><span>🍜</span> Food exploration</span>
+        </div> -->
       </div>
       <div class="about-sidebar">
         <div class="skills-group">
@@ -419,7 +473,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
             <span class="skill-tag">Agile / Scrum</span>
           </div>
         </div>
-        <div class="skills-group">
+        <!-- <div class="skills-group">
           <div class="skills-group-title">Domain expertise</div>
           <div class="skills-list">
             <span class="skill-tag">Healthcare Technology</span>
@@ -427,7 +481,21 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
             <span class="skill-tag">Accessibility & Inclusive Design</span>
             <span class="skill-tag">FinTech · Payment Systems</span>
           </div>
-        </div>
+        </div> -->
+		<div class="skills-group">
+		  <div class="skills-group-title">Domain expertise</div>
+		  <div class="skills-list">
+			<span class="skill-tag">B2C Healthcare: Rural health & Patient-facing platforms</span>
+			
+			<span class="skill-tag">B2B2C FinTech: Global payment terminals & Retail flows</span>
+			
+			<span class="skill-tag">B2B Enterprise: Industrial simulation (VEOL) & Lab automation</span>
+			
+			<span class="skill-tag">Logistics & Operational Efficiency</span>
+			
+			<span class="skill-tag">Accessibility & Inclusive Design</span>
+		  </div>
+		</div>
       </div>
     </div>
   </div>
@@ -478,6 +546,38 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
     </div>
   </div>
 </div>
+<!-- ── CHATBOT FAQ ── -->
+<button class="chatbot-btn" onclick="document.querySelector('.chatbot-panel').classList.toggle('open')" aria-label="Open FAQ">💬</button>
+<div class="chatbot-panel">
+  <div class="chat-title">Quick answers</div>
+  <div class="chat-sub">About my work and background</div>
+  <div class="chat-q" onclick="showAns(this,'I led UX research for MAVI — an AI-powered playboard for autistic children — winning 1st Place + Special Recognition at a Design Hackathon. I also designed the complete WeCare healthcare platform UI across 18 screens, and am currently the lead UX researcher on LyricLab.')">What have you worked on?</div>
+  <div class="chat-q" onclick="showAns(this,'User interviews, usability testing, survey design, behavioral analysis, journey mapping, persona development, card sorting, affinity mapping, heuristic evaluation, and translating research into product strategy.')">What are your research skills?</div>
+  <div class="chat-q" onclick="showAns(this,'Yes — 5+ years as an SDE at Verifone, Impelsys, and Axiom. My engineering background goes beyond bridging the handoff; I specialise in operational efficiency  — translating complex logic (payment protocols, physics simulations) into seamless, high-stakes interfaces.')">Do you have a technical background?</div>
+  <div class="chat-q" onclick="showAns(this,'I focus on healthcare technology, accessibility & inclusive design, FinTech (payment systems), and mobile-first products for underserved user groups.')">What domains do you specialise in?</div>
+  <!-- <div class="chat-q" onclick="showAns(this,'I use Figma as my primary design environment but am also proficient in Adobe XD. Beyond traditional design, I leverage AI-first workflows like Cursor, Lovable, and Antigravity to rapidly prototype and advocate for technically feasible, scalable solutions.')">What tools do you use?</div> -->
+  <div class="chat-q" onclick="showAns(this,'I use Figma for core design, but I also have an edge in AI-augmented workflow. I leverage Claude for logic-heavy prototyping in Cursor, Gemini for exploring Antigravity, and AI image generation to rapidly iterate on visual concepts—allowing me to bridge the gap between design and functional code faster than traditional methods.')">What tools do you use?</div>
+  <div class="chat-q" onclick="showAns(this,'chaithanya2092@gmail.com — or connect on LinkedIn at linkedin.com/in/chaithanya-design')">How can I reach you?</div>
+  <div class="chat-answer" id="chat-ans"></div>
+</div>
+
+<script>
+function showAns(el, text) {
+  document.querySelectorAll('.chat-q').forEach(q => q.style.borderColor = '');
+  el.style.borderColor = 'var(--accent)';
+  const ans = document.getElementById('chat-ans');
+  ans.textContent = text;
+  ans.classList.add('show');
+}
+// Close chatbot when clicking outside
+document.addEventListener('click', function(e) {
+  const panel = document.querySelector('.chatbot-panel');
+  const btn = document.querySelector('.chatbot-btn');
+  if (!panel.contains(e.target) && !btn.contains(e.target)) {
+    panel.classList.remove('open');
+  }
+});
+</script>
 
 </body>
 </html>
