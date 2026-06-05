@@ -33,12 +33,19 @@ body{font-family:var(--font-body);background:var(--paper);color:var(--ink);line-
 
 /* ── NAVIGATION ── */
 nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--border);padding:0 48px}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
-.nav-logo{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-0.02em}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:8px 0;gap:16px;flex-wrap:nowrap}
+.nav-logo{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--ink);text-decoration:none;letter-spacing:-0.02em;white-space:nowrap;margin-right:auto;padding-right:32px}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:13px;font-weight:400;color:var(--ink-2);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
 .nav-links a:hover{color:var(--ink)}
-.nav-badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;background:#e8f5e4;color:#2d6a1f;border:1px solid #b8dba8}
+.nav-badge{font-size:11px;font-weight:500;padding:4px 10px;border-radius:20px;background:#e8f5e4;color:#2d6a1f;border:1px solid #b8dba8;flex-shrink:0;line-height:1.4;text-align:center}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;margin-left:8px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.2s}
+.mobile-nav{display:none;flex-direction:column;position:absolute;top:56px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--border);padding:16px 20px;gap:16px;z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-size:15px;font-weight:400;color:var(--ink-2);text-decoration:none}
+.mobile-nav a:hover{color:var(--ink)}
+nav{position:relative}
 
 /* ── HERO ── */
 .hero{max-width:1100px;margin:0 auto;padding:56px 48px 48px}
@@ -90,8 +97,8 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .work-card.featured .work-tag{background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7)}
 .work-year{font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
 .work-card.featured .work-year{color:rgba(255,255,255,0.4)}
-.work-title{font-family:var(--font-display);font-size:26px;font-weight:400;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;color:inherit}
-.work-card.featured .work-title{font-size:32px}
+.work-title{font-family:var(--font-display);font-size:26px;font-weight:400;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;color:var(--ink)}
+.work-card.featured .work-title{font-size:32px;color:var(--white)}
 .work-desc{font-size:14px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;max-width:520px}
 .work-card.featured .work-desc{color:rgba(255,255,255,0.65)}
 .work-footer{display:flex;align-items:center;justify-content:space-between}
@@ -115,8 +122,19 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .bg-item:last-child{border-bottom:none}
 .bg-item{transition:transform 0.2s ease, box-shadow 0.2s ease;}
 .bg-item:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(109,40,217,0.08);border-radius:8px;padding-left:12px;border-left:2px solid var(--accent);}	
-.wecare-mockup{position:absolute;right:40px;bottom:0;width:220px;animation:wecareFloat 3s ease-in-out infinite;pointer-events:none;filter:drop-shadow(0 20px 40px rgba(0,0,0,0.3));}
-@keyframes wecareFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* ── WECARE CARD LAYOUT ── */
+.wecare-inner{display:flex;align-items:flex-end;gap:0;position:relative;}
+.wecare-text{flex:1;min-width:0;padding-right:260px;}
+.wecare-mockup-abs{position:absolute;right:-40px;bottom:-40px;width:240px;pointer-events:none;filter:drop-shadow(0 -8px 24px rgba(0,0,0,0.5));animation:wecareFloat 3.5s ease-in-out infinite;}
+@keyframes wecareFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:900px){
+  .wecare-text{padding-right:200px}
+  .wecare-mockup-abs{width:180px;right:-20px;bottom:-20px}
+}
+@media(max-width:600px){
+  .wecare-text{padding-right:0}
+  .wecare-mockup-abs{display:none}
+}
 .bg-year{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);padding-top:2px}
 .bg-content{}
 .bg-role{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
@@ -125,7 +143,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 .bg-ux-note{font-size:12px;color:var(--teal);background:var(--teal-light);padding:4px 10px;border-radius:4px;display:inline-block;margin-top:6px}
 
 /* ── ABOUT ── */
-.about-section{padding:80px 0}
+.about-section{padding:80px 48px}
 .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
 .about-text{}
 .about-title{font-family:var(--font-display);font-size:40px;font-weight:300;letter-spacing:-0.02em;line-height:1.15;margin-bottom:24px;color:var(--ink)}
@@ -163,7 +181,7 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 /* ── CHATBOT ── */
 .chatbot-btn{position:fixed;bottom:28px;right:28px;width:48px;height:48px;border-radius:50%;background:var(--ink);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:200;transition:all 0.2s;font-size:18px}
 .chatbot-btn:hover{transform:scale(1.05);background:#333}
-.chatbot-panel{position:fixed;bottom:88px;right:28px;width:300px;background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.12)}
+.chatbot-panel{position:fixed;bottom:88px;right:28px;width:min(300px,calc(100vw - 40px));background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;z-index:200;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.12);max-height:70vh;overflow-y:auto}
 .chatbot-panel.open{display:block}
 .chat-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:3px}
 .chat-sub{font-size:12px;color:var(--ink-3);margin-bottom:14px}
@@ -183,6 +201,9 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
 /* ── RESPONSIVE ── */
 @media(max-width:768px){
   nav{padding:0 20px}
+  .nav-badge{font-size:10px;padding:3px 8px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
   .hero,.section{padding-left:20px;padding-right:20px}
   .hero{padding-top:56px;padding-bottom:48px}
   .hero-headline{font-size:34px}
@@ -193,8 +214,11 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
   .work-card.featured{grid-column:1;overflow:visible}
   .bg-grid,.about-grid,.contact-inner{grid-template-columns:1fr;gap:40px}
   .background-section{padding:48px 20px}
+  .about-section{padding:48px 20px !important}
   .contact-section{padding:48px 20px}
   .nav-links{display:none}
+  .nav-links{gap:20px}
+  .work-card{padding:24px 20px}
 }
 </style>
 </head>
@@ -212,6 +236,15 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
       <li><a href="#contact">Contact</a></li>
     </ul>
     <span class="nav-badge">Open to work · Open to freelance · Bengaluru</span>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <a href="#work" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Work</a>
+    <a href="#background" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Engineering</a>
+    <a href="#about" onclick="document.querySelector('.mobile-nav').classList.remove('open')">About</a>
+    <a href="#contact" onclick="document.querySelector('.mobile-nav').classList.remove('open')">Contact</a>
   </div>
 </nav>
 
@@ -256,27 +289,31 @@ nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px 
     <div class="work-grid">
 
       <!-- WeCare — Featured -->
-      <div class="work-card featured" onclick="window.open('https://www.behance.net/gallery/248477539/WeCare-Healthcare-UX-for-Rural-Kerala','_blank')" style="cursor:pointer">
-        <div class="award-badge">⭐ Featured Project · Sole Designer · Healthcare UX</div>
-        <div class="work-card-meta">
-          <span class="work-tag">UI/UX Design · Research </span>
-        </div>
-        <div class="work-title">WeCare — Healthcare platform for rural communities</div>
-        <div class="work-desc">Sole designer on WeCare — a home healthcare platform for underserved communities. Research revealed that users weren't looking for more features; they were looking for a system they could trust. That insight shaped the entire UX — from how caregivers are presented to how payments are structured.</div>
-        <div class="work-footer">
-          <div class="work-skills">
-            <span class="work-skill">User Research</span>
-            <span class="work-skill">Survey Analysis</span>
-            <span class="work-skill">Hi-Fi Prototyping</span>
-            <span class="work-skill">Figma</span>
-            <span class="work-skill">Design Systems</span>
+      <div class="work-card featured" onclick="window.open('https://www.behance.net/gallery/248477539/WeCare-Healthcare-UX-for-Rural-Kerala','_blank')" style="cursor:pointer;overflow:visible;position:relative;">
+        <div class="wecare-inner">
+          <div class="wecare-text">
+            <div class="award-badge">⭐ Featured Project · Sole Designer · Healthcare UX</div>
+            <div class="work-card-meta">
+              <span class="work-tag">UI/UX Design · Research</span>
+            </div>
+            <div class="work-title">WeCare — Healthcare platform for rural communities</div>
+            <div class="work-desc">Sole designer on WeCare — a home healthcare platform for underserved communities. Research revealed that users weren't looking for more features; they were looking for a system they could trust. That insight shaped the entire UX — from how caregivers are presented to how payments are structured.</div>
+            <div class="work-footer">
+              <div class="work-skills">
+                <span class="work-skill">User Research</span>
+                <span class="work-skill">Survey Analysis</span>
+                <span class="work-skill">Hi-Fi Prototyping</span>
+                <span class="work-skill">Figma</span>
+                <span class="work-skill">Design Systems</span>
+              </div>
+              <span style="font-size:11px;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:5px">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                NDA · Screens on request ↗
+              </span>
+            </div>
           </div>
-          <span style="font-size:11px;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:5px">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            NDA · Screens on request ↗
-          </span>
+          <img src="wecare-home.png" class="wecare-mockup-abs" alt="WeCare home screen">
         </div>
-		<img src="wecare-home.png" class="wecare-mockup" alt="WeCare home screen">
       </div>
 
       <!-- MAVI -->
